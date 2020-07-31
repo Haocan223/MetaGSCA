@@ -64,6 +64,7 @@ Viechtbauer, W. Conducting Meta-Analyses in R with the metafor Package. J Stat S
 
 \examples{
 
+###########################
 ## step 1, read in pathways
 mygeneset <- list.files(system.file("extdata", package = "MetaGSCA"),
                         pattern = "*.lst", full.names=TRUE)
@@ -76,16 +77,15 @@ for (i in 1:length(mygeneset)) {
 genesetnames <- gsub(paste(system.file("extdata", package = "MetaGSCA"),
                      "/", sep = ""), "", genesetnames)
 
-
+##########################
 ## step 2,read in datasets
 mydataset <- c(paste(system.file("extdata", package = "MetaGSCA"),
-                     "/KIRP.csv", sep=""),
+                     "/KIRP.rds", sep=""),
                paste(system.file("extdata", package = "MetaGSCA"),
-                     "/LIHC.csv", sep=""))
-
+                     "/LIHC.rds", sep=""))
 datasets <- list(); groups <- list(); datasetnames <- list()
 for (j in 1:length(mydataset)) {
-    d <- fread(mydataset[j], header = TRUE, data.table = FALSE)
+    d <- readRDS(file = mydataset[j])
     datasets[[j]] <- d[-1,]
     groups[[j]] <- as.character(d[1, -1])
     datasetnames[[j]] <- tools::file_path_sans_ext(mydataset[j])
