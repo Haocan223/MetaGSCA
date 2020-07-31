@@ -181,14 +181,9 @@ summary {
 Tutorial of the MetaGSCA package
 </h2>
 </center></h1>
-<h4 class="author"><center>
-<h5>
-Yan Guo, Fei Ye
-</h5>
-</center></h4>
 <h4 class="date"><center>
 <h4>
-2020-07-30
+2020-07-31
 </center></h4>
 
 </div>
@@ -232,7 +227,13 @@ body {
 <div style="margin-bottom:50px;">
 
 </div>
-<p><font size="4"> <strong>Package: MetaGSCA 0.99.0</strong></font></p>
+<p><font size="4"><strong>Package:</strong></font><br />
+MetaGSCA 0.99.0</p>
+<p><font size="4"><strong>Authors:</strong></font><br />
+Hui Yu <a href="mailto:HuiYu1@salud.unm.edu">HuiYu1@salud.unm.edu</a><br />
+Haocan Song <a href="mailto:haocan.song@vumc.org">haocan.song@vumc.org</a><br />
+Yan Guo <a href="mailto:YaGuo@salud.unm.edu">YaGuo@salud.unm.edu</a><br />
+Fei Ye <a href="mailto:fei.ye@vumc.org">fei.ye@vumc.org</a></p>
 <div id="introduction" class="section level1">
 <h1><span class="header-section-number">1</span> Introduction</h1>
 <p><font size="3"> This tutorial provides an overview and a tutorial of the R package <em>MetaGSCA</em> for Meta Gene Set Co-Expression Analysis. </font></p>
@@ -275,12 +276,12 @@ genesetnames &lt;- gsub(paste(system.file(&quot;extdata&quot;, package = &quot;M
 ##########################
 ## step 2,read in datasets
 mydataset &lt;- c(paste(system.file(&quot;extdata&quot;, package = &quot;MetaGSCA&quot;),
-                     &quot;/KIRP.csv&quot;, sep=&quot;&quot;),
+                     &quot;/KIRP.rds&quot;, sep=&quot;&quot;),
                paste(system.file(&quot;extdata&quot;, package = &quot;MetaGSCA&quot;),
-                     &quot;/LIHC.csv&quot;, sep=&quot;&quot;))
+                     &quot;/LIHC.rds&quot;, sep=&quot;&quot;))
 datasets &lt;- list(); groups &lt;- list(); datasetnames &lt;- list()
 for (j in 1:length(mydataset)) {
-    d &lt;- fread(mydataset[j], header = TRUE, data.table = FALSE)
+    d &lt;- readRDS(file = mydataset[j])
     datasets[[j]] &lt;- d[-1,]
     groups[[j]] &lt;- as.character(d[1, -1])
     datasetnames[[j]] &lt;- tools::file_path_sans_ext(mydataset[j])
