@@ -1,6 +1,5 @@
 ---
 title: <center> <h2>Tutorial of the MetaGSCA package</h2> </center>
-author: <center> <h5>Yan Guo, Fei Ye</h5> </center>
 date: <center> <h4>`r Sys.Date()` </center>
 output: 
   html_document:
@@ -38,8 +37,14 @@ body {
 library(knitr)
 ```
 
-<font size="4"> **Package: MetaGSCA 0.99.0**</font> 
+<font size="4">**Package:**</font>   
+MetaGSCA 0.99.0  
 
+<font size="4">**Authors:**</font>       
+Hui Yu <HuiYu1@salud.unm.edu>  
+Haocan Song <haocan.song@vumc.org>  
+Yan Guo <YaGuo@salud.unm.edu>  
+Fei Ye <fei.ye@vumc.org>   
 
 
 
@@ -109,12 +114,12 @@ genesetnames <- gsub(paste(system.file("extdata", package = "MetaGSCA"),
 ##########################
 ## step 2,read in datasets
 mydataset <- c(paste(system.file("extdata", package = "MetaGSCA"),
-                     "/KIRP.csv", sep=""),
+                     "/KIRP.rds", sep=""),
                paste(system.file("extdata", package = "MetaGSCA"),
-                     "/LIHC.csv", sep=""))
+                     "/LIHC.rds", sep=""))
 datasets <- list(); groups <- list(); datasetnames <- list()
 for (j in 1:length(mydataset)) {
-    d <- fread(mydataset[j], header = TRUE, data.table = FALSE)
+    d <- readRDS(file = mydataset[j])
     datasets[[j]] <- d[-1,]
     groups[[j]] <- as.character(d[1, -1])
     datasetnames[[j]] <- tools::file_path_sans_ext(mydataset[j])
