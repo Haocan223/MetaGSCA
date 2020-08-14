@@ -22,7 +22,7 @@ PWsim <- function(dichotP,test=c('phi','binary')[1]) {
       # NOTE: McNemar does not use correction because an 2013 study finds correction over-conservative.
         phi=crosstable_statistics(tab,statistics='phi')$p.value,
         #mcnemar=mcnemar.test(matrix(tab,nr=2),correct=F)$p.value,#crossTab        
-        binary=1-dist(dist(rbind(dichotP[i,],dichotP[j,]),method='binary')) # inverse distance
+        binary=1-dist(rbind(dichotP[i,],dichotP[j,]),method='binary') # inverse distance
       )           
     }
   }
