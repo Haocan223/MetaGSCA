@@ -4,13 +4,13 @@
 ### Several columns of meta-P values follow the dataset-specific p-value columns.
 dichotGSAR <- function(input2PWcTalk,pTh.dataset=0.01) { #,meta=c('glmm','inverse')[1]
   if (is.null(nrow(input2PWcTalk))) {# input is a file name, rather the data frame
-    input2PWcTalk <- read.csv(input2PWcTalk,as.is=T,row.names=1)
+    input2PWcTalk <- read.csv(input2PWcTalk,as.is=TRUE,row.names=1)
   }
   metaGSAR <- input2PWcTalk
   GSAR <- metaGSAR[,-c(1:3)]
   dichotP <- GSAR<=pTh.dataset
   dichotP[is.na(dichotP)] <- 0
-  metaP <- metaGSAR[,'bootstrap.p'] 
+  metaP <- metaGSAR[,'bootstrap.p']
   names(metaP) <- rownames(metaGSAR)
-  res <- list(dichotP=dichotP,metaP=metaP)  
+  res <- list(dichotP=dichotP,metaP=metaP)
 }

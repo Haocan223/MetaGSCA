@@ -63,9 +63,9 @@ GSAR_boot <- function(projectname, gematrix, group, genelist, nperm = 500, cor.m
         sd1 <- apply(objt1, 2, "sd")
         sd2 <- apply(objt2, 2, "sd")
 
-        if (sum(sd1 < min.sd, na.rm=T) > 0)
+        if (sum(sd1 < min.sd, na.rm=TRUE) > 0)
             stop(paste("There are ", sum(sd1 < min.sd), " Original Data: features with standard deviation smaller than ", min.sd, " in group 1", sep = ""))
-        if (sum(sd2 < min.sd, na.rm=T) > 0)
+        if (sum(sd2 < min.sd, na.rm=TRUE) > 0)
             stop(paste("There are ", sum(sd2 < min.sd), " Original Data: features with standard deviation smaller than ", min.sd, " in group 2", sep = ""))
     }
 
