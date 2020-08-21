@@ -66,7 +66,7 @@ Viechtbauer, W. Conducting Meta-Analyses in R with the metafor Package. J Stat S
 
 ###########################
 ## step 1, read in pathways
-mygeneset <- list.files(system.file("extdata", package = "MetaGSCA"),
+mygeneset <- list.files(system.file("extdata/pathway29", package = "MetaGSCA"),
                         pattern = "*.lst", full.names=TRUE)
 genesets <- list(); genesetnames <- list()
 for (i in 1:length(mygeneset)) {
@@ -74,7 +74,7 @@ for (i in 1:length(mygeneset)) {
     genesets[[i]] <- as.character(g[, 1])
     genesetnames[[i]] <- tools::file_path_sans_ext(mygeneset[i])
 }
-genesetnames <- gsub(paste(system.file("extdata", package = "MetaGSCA"),
+genesetnames <- gsub(paste(system.file("extdata/pathway29", package = "MetaGSCA"),
                      "/", sep = ""), "", genesetnames)
 
 ##########################
