@@ -7,9 +7,9 @@ PWcTalkNWpre <- function(input2PWcTalk,test='binary',
   dichotGSAR.res <- dichotGSAR(input2PWcTalk,pTh.dataset=pTh.dataset)
   PWsim.res <- PWsim(dichotGSAR.res$dichotP,test=test) #crossTab
   edges <- PWsimDichot(PWsim.res,dichotGSAR.res$metaP,pTh.pwPair=pTh.pwPair,pTh.pw=pTh.pw)
-  PWpair <- subset(edges,connect==1)[,1:3]
+  PWpair <- subset(edges,connect==1)[,seq_len(3)]
   if (nrow(PWpair)>0) {
-    pws <- unique(as.character(unlist(PWpair[,1:2]))) 
+    pws <- unique(as.character(unlist(PWpair[,seq_len(2)]))) 
     PWp <- data.frame(pws,pwP=dichotGSAR.res$metaP[pws])
   } else {
     warning('Zero edge survives specified thresholds! Impossible to draw pathway crosstalk network!')
