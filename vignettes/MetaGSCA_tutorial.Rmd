@@ -100,7 +100,7 @@ library(MetaGSCA)
 ```{r warning =FALSE}
 ###########################
 ## step 1, read in pathways
-mygeneset <- list.files(system.file("extdata", package = "MetaGSCA"),
+mygeneset <- list.files(system.file("extdata/pathway29", package = "MetaGSCA"),
                         pattern = "*.lst", full.names=TRUE)
 genesets <- list(); genesetnames <- list()
 for (i in 1:length(mygeneset)) {
@@ -108,7 +108,7 @@ for (i in 1:length(mygeneset)) {
     genesets[[i]] <- as.character(g[, 1])
     genesetnames[[i]] <- tools::file_path_sans_ext(mygeneset[i])
 }
-genesetnames <- gsub(paste(system.file("extdata", package = "MetaGSCA"),
+genesetnames <- gsub(paste(system.file("extdata/pathway29", package = "MetaGSCA"),
                      "/", sep = ""), "", genesetnames)
 
 ##########################
@@ -135,8 +135,8 @@ genesetnames
 ```
 
 **2. lists of datasets (KIRP & LIHC):**   
-*  **KIRP** (17759 rows & 65 columns) contain 17758 genes & 32 individuals, individuals are equally distributed in 2 groups (group1 & group2).    
-*  **LIHC** (16796 rows & 101 columns) contain 16795 genes & 50 individuals, individuals are equally distributed in 2 groups (group1 & group2).    
+*  **KIRP** (3819 rows & 65 columns) contain 3818 genes & 32 individuals, individuals are equally distributed in 2 groups (group1 & group2).    
+*  **LIHC** (3687 rows & 101 columns) contain 3686 genes & 50 individuals, individuals are equally distributed in 2 groups (group1 & group2).    
 </font>   
 <br>
 
