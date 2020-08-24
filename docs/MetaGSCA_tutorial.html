@@ -183,7 +183,7 @@ Tutorial of the MetaGSCA package
 </center></h1>
 <h4 class="date"><center>
 <h4>
-2020-08-18
+2020-08-24
 </center></h4>
 
 </div>
@@ -262,7 +262,7 @@ workdir &lt;- setwd()</code></pre>
 The 2 source of data are necessary for running the examples and case studies in this tutorial. </font></p>
 <pre class="r"><code>###########################
 ## step 1, read in pathways
-mygeneset &lt;- list.files(system.file(&quot;extdata&quot;, package = &quot;MetaGSCA&quot;),
+mygeneset &lt;- list.files(system.file(&quot;extdata/pathway29&quot;, package = &quot;MetaGSCA&quot;),
                         pattern = &quot;*.lst&quot;, full.names=TRUE)
 genesets &lt;- list(); genesetnames &lt;- list()
 for (i in 1:length(mygeneset)) {
@@ -270,7 +270,7 @@ for (i in 1:length(mygeneset)) {
     genesets[[i]] &lt;- as.character(g[, 1])
     genesetnames[[i]] &lt;- tools::file_path_sans_ext(mygeneset[i])
 }
-genesetnames &lt;- gsub(paste(system.file(&quot;extdata&quot;, package = &quot;MetaGSCA&quot;),
+genesetnames &lt;- gsub(paste(system.file(&quot;extdata/pathway29&quot;, package = &quot;MetaGSCA&quot;),
                      &quot;/&quot;, sep = &quot;&quot;), &quot;&quot;, genesetnames)
 
 ##########################
@@ -320,8 +320,8 @@ datasetnames &lt;- gsub(paste(system.file(&quot;extdata&quot;, package = &quot;M
 ## [28] &quot;Tyrosine metabolism&quot;                                          
 ## [29] &quot;Vitamin D metabolism and pathway&quot;</code></pre>
 <p><strong>2. lists of datasets (KIRP &amp; LIHC):</strong><br />
-* <strong>KIRP</strong> (17759 rows &amp; 65 columns) contain 17758 genes &amp; 32 individuals, individuals are equally distributed in 2 groups (group1 &amp; group2).<br />
-* <strong>LIHC</strong> (16796 rows &amp; 101 columns) contain 16795 genes &amp; 50 individuals, individuals are equally distributed in 2 groups (group1 &amp; group2).<br />
+* <strong>KIRP</strong> (3819 rows &amp; 65 columns) contain 3818 genes &amp; 32 individuals, individuals are equally distributed in 2 groups (group1 &amp; group2).<br />
+* <strong>LIHC</strong> (3687 rows &amp; 101 columns) contain 3686 genes &amp; 50 individuals, individuals are equally distributed in 2 groups (group1 &amp; group2).<br />
 </font><br />
 <br></p>
 </div>
