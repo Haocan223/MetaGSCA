@@ -77,15 +77,15 @@ GSAR_boot <- function(projectname, gematrix, group, genelist, nperm = 500, cor.m
     p2 <- abs(e2$vectors[, 1])
     D_obs <- sum(abs((p1 * norm(matrix(p1))) - (p2 * norm(matrix(p2)))))       ### Compute the Norm of a Matrix
 
-    domain <- c(1:ncol(object))
+    domain <- seq_len(ncol(object))
     D_perm <- array(0, c(1, nperm))
     skip.counter <- 0
 
-    for (itr in 1:nperm) {
+    for (itr in seq_len(nperm)) {
         randperm <- sample(domain, replace = FALSE)      ### Random Samples and Permutations
         objt <- aperm(object[, randperm], c(2, 1))
         nv1 <- sum(group == 1)
-        group1 <- objt[1:nv1, ]
+        group1 <- objt[seq_len(nv1), ]
         group2 <- objt[(nv1 + 1):nv, ]
         if (check.sd == TRUE) {
             sd1 <- apply(group1, 2, "sd")
@@ -98,7 +98,7 @@ GSAR_boot <- function(projectname, gematrix, group, genelist, nperm = 500, cor.m
                 skip.counter <- skip.counter + 1
                 randperm <- sample(domain, replace = FALSE)
                 objt <- aperm(object[, randperm], c(2, 1))
-                group1 <- objt[1:nv1, ]
+                group1 <- objt[seq_len(nv1), ]
                 group2 <- objt[(nv1 + 1):nv, ]
                 sd1 <- apply(group1, 2, "sd")
                 sd2 <- apply(group2, 2, "sd")
@@ -123,7 +123,7 @@ GSAR_boot <- function(projectname, gematrix, group, genelist, nperm = 500, cor.m
     pvalue_boot <- c()
 
 
-    for (i in 1:R){
+    for (i in seq_len(R)){
 
         #print(i)
 
@@ -158,15 +158,15 @@ GSAR_boot <- function(projectname, gematrix, group, genelist, nperm = 500, cor.m
         p2 <- abs(e2$vectors[, 1])
         D_obs_boot[i] <- sum(abs((p1 * norm(matrix(p1))) - (p2 * norm(matrix(p2)))))       ### Compute the Norm of a Matrix
 
-        domain <- c(1:ncol(object))
+        domain <- seq_len(ncol(object))
         D_perm_boot <- array(0, c(1, nperm))
         skip.counter <- 0
 
-        for (itr in 1:nperm) {
+        for (itr in seq_len(nperm)) {
             randperm <- sample(domain, replace = FALSE)      ### Random Samples and Permutations
             objt <- aperm(object[, randperm], c(2, 1))
             nv1 <- sum(group == 1)
-            group1 <- objt[1:nv1, ]
+            group1 <- objt[seq_len(nv1), ]
             group2 <- objt[(nv1 + 1):nv, ]
             if (check.sd == TRUE) {
                 sd1 <- apply(group1, 2, "sd")
@@ -178,7 +178,7 @@ GSAR_boot <- function(projectname, gematrix, group, genelist, nperm = 500, cor.m
                     skip.counter <- skip.counter + 1
                     randperm <- sample(domain, replace = FALSE)
                     objt <- aperm(object[, randperm], c(2, 1))
-                    group1 <- objt[1:nv1, ]
+                    group1 <- objt[seq_len(nv1), ]
                     group2 <- objt[(nv1 + 1):nv, ]
                     sd1 <- apply(group1, 2, "sd")
                     sd2 <- apply(group2, 2, "sd")
@@ -308,7 +308,7 @@ MetaGSCA <- function(list.geneset,  ## a pre-specified gene list from a gene set
     list <- list()
     res <- NULL
     coexp <- NULL
-    for (j in 1:length(list.dataset)){
+    for (j in seq_len(length(list.dataset))){
         current.time <- Sys.time()
         cat(paste0(current.time, " Processing dataset: ", name.dataset[j], "..."))
         cat('\n')
@@ -323,7 +323,7 @@ MetaGSCA <- function(list.geneset,  ## a pre-specified gene list from a gene set
 
     ### Meta Analysis
     Event <- c()
-    for (j in 1:length(list)){
+    for (j in seq_len(length(list))){
         event <- ceiling(list[[j]]$Original.Pvalue * (nperm + 1) - 1)
         Event <- c(Event, event)
         #print(event)
@@ -348,9 +348,9 @@ MetaGSCA <- function(list.geneset,  ## a pre-specified gene list from a gene set
         ## STEP 2, Meta Analysis for bootstrap p-value
         meta.p.inv.fixed <- c()
         meta.p.inv.random <- c()
-        for (i in 1:nboot) {
+        for (i in seq_len(nboot)) {
             event.boot <- c()
-            for(j in 1:length(list)){
+            for(j in seq_len(length(list))){
                 event.boot <- c(event.boot, ceiling(list[[j]]$Boot.Pvalue[i] * (nperm + 1) - 1))
             }
 
@@ -450,9 +450,9 @@ MetaGSCA <- function(list.geneset,  ## a pre-specified gene list from a gene set
         ## STEP 2, Meta Analysis for bootstrap p-value
         meta.p.glmm.fixed <- c()
         meta.p.glmm.random <- c()
-        for (i in 1:nboot) {
+        for (i in seq_len(nboot)) {
             event.boot <- c()
-            for(j in 1:length(list)){
+            for(j in seq_len(length(list))){
                 event.boot <- c(event.boot, ceiling(list[[j]]$Boot.Pvalue[i] * (nperm + 1) - 1))
             }
 
@@ -597,7 +597,7 @@ MetaGSCA_Multi_Geneset <- function(list.geneset,  ## list of geneset
                                    random.effect = TRUE){
 
     res <- NULL
-    for (i in 1:length(list.geneset)) {
+    for (i in seq_len(length(list.geneset))) {
         cat(name.geneset[i])
         cat('\n')
 

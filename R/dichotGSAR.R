@@ -7,7 +7,7 @@ dichotGSAR <- function(input2PWcTalk,pTh.dataset=0.01) { #,meta=c('glmm','invers
     input2PWcTalk <- read.csv(input2PWcTalk,as.is=TRUE,row.names=1)
   }
   metaGSAR <- input2PWcTalk
-  GSAR <- metaGSAR[,-c(1:3)]
+  GSAR <- metaGSAR[,-seq_along(c(1:3))]
   dichotP <- GSAR<=pTh.dataset
   dichotP[is.na(dichotP)] <- 0
   metaP <- metaGSAR[,'bootstrap.p']
