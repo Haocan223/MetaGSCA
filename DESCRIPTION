@@ -1,8 +1,8 @@
 Package: MetaGSCA
 Type: Package
 Title: Meta Gene Set Co-expression Analysis
-Version: 0.99.0
-Date: 2020-7-31
+Version: 0.99.1
+Date: 2020-9-3
 Author: Hui Yu <HuiYu1@salud.unm.edu>, Haocan Song <haocan.song@vumc.org>
 Maintainer: Hui Yu <HuiYu1@salud.unm.edu>
 Depends: R (>= 3.0.1), data.table, meta, grid, sjstats, igraph
