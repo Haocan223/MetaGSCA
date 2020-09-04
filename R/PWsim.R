@@ -7,7 +7,7 @@
 ### 3rd col: edge connection strength. It is full connection still.
 PWsim <- function(dichotP,test=c('phi','binary')[1]) {
   require('sjstats') # PACKAGE sjstats must be pre-installed for phi
-  pws <- sort(rownames(dichotP))
+  pws <- rownames(dichotP)
   nPW <- length(pws)
   nComb <- nPW*(nPW-1)/2
   edge <- matrix(nr=nComb,nc=2)
