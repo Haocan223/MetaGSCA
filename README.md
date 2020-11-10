@@ -6,4 +6,5 @@ install_github('Haocan223/MetaGSCA')
 
 [Tutorial](https://haocan223.github.io/MetaGSCA/MetaGSCA_tutorial.html)
 
-[Pathway source table](https://haocan223.github.io/MetaGSCA/SuppTab1_PathwaySource.xlsx)
+[Pathway source table](https://haocan223.github.io/MetaGSCA/PathwaySource.txt)
+Download: [xlsx](https://haocan223.github.io/MetaGSCA/SuppTab1_PathwaySource.xlsx) [pdf](https://haocan223.github.io/MetaGSCA/SuppTab1_PathwaySource.pdf)
